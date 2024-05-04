@@ -233,7 +233,7 @@
             // 
             this.RichTextBackColor.Image = ((System.Drawing.Image)(resources.GetObject("RichTextBackColor.Image")));
             this.RichTextBackColor.Name = "RichTextBackColor";
-            this.RichTextBackColor.Size = new System.Drawing.Size(164, 22);
+            this.RichTextBackColor.Size = new System.Drawing.Size(180, 22);
             this.RichTextBackColor.Text = "Колір редактора";
             this.RichTextBackColor.Click += new System.EventHandler(this.RichTextBackColor_Click);
             // 
@@ -437,7 +437,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Текстовий редактор Kaspar";
+            this.Text = "Текстовий редактор Кашпера Ростислава";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);

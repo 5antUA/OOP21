@@ -20,7 +20,7 @@ namespace OOP21
         }
 
 
-        // ВКЛАДКА ФАЙЛ
+        // Кнопка для відкриття файлу
         private void OpenFile_Click(object sender, EventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
@@ -32,6 +32,7 @@ namespace OOP21
             richTextBox1.Text = fileText;
         }
 
+        // Кнопка для збереження файлу
         private void SaveFileAs_Click(object sender, EventArgs e)
         {
             SaveFileDialog fileDialog = new SaveFileDialog();
@@ -44,7 +45,7 @@ namespace OOP21
         }
 
 
-        // ВКЛАДКА РЕДАГУВАННЯ
+        // Кнопка для копіювання тексту (із вкладки)
         private void CopyText_Click(object sender, EventArgs e)
         {
             if (richTextBox1.TextLength > 0)
@@ -53,6 +54,7 @@ namespace OOP21
             }
         }
 
+        // Кнопка для вставки тексту (із вкладки)
         private void PasteText_Click(object sender, EventArgs e)
         {
             if (richTextBox1.TextLength > 0)
@@ -61,6 +63,7 @@ namespace OOP21
             }
         }
 
+        // Кнопка для вирізу тексту (із вкладки)
         private void CutText_Click_1(object sender, EventArgs e)
         {
             if (richTextBox1.TextLength > 0)
@@ -68,6 +71,8 @@ namespace OOP21
                 richTextBox1.Cut();
             }
         }
+
+        // Кнопка для виділення всього тексту (із вкладки)
         private void SelectAllText_Click(object sender, EventArgs e)
         {
             if (richTextBox1.TextLength > 0)
@@ -76,6 +81,7 @@ namespace OOP21
             }
         }
 
+        // Кнопка для вставки зображення (із вкладки)
         private void PasteImage_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -92,7 +98,7 @@ namespace OOP21
         }
 
 
-        // ВКЛАДКА ФОРМАТУВАННЯ
+        // Кнопка для зміни загальної зміни форматування тексту
         private void FontSettings_Click(object sender, EventArgs e)
         {
             FontDialog fontDialog = new FontDialog();
@@ -100,6 +106,7 @@ namespace OOP21
             richTextBox1.Font = fontDialog.Font;
         }
 
+        // Кнопка для зміни кольору виділеного тексту
         private void ChangeTextColor_Click(object sender, EventArgs e)
         {
             ColorDialog colorDialog = new ColorDialog();
@@ -107,8 +114,7 @@ namespace OOP21
             richTextBox1.SelectionColor = colorDialog.Color;
         }
 
-
-        // ВКЛАДКА ІНТЕРФЕЙСУ
+        // Кнопка для зміни кольору редактора
         private void RichTextBackColor_Click(object sender, EventArgs e)
         {
             ColorDialog colorDialog = new ColorDialog();
@@ -117,7 +123,7 @@ namespace OOP21
         }
 
 
-        // КОНТЕКСТНЕ МЕНЮ ПО НАТИСКАНЮЮ ПРАВОЇ КНОПКИ МИШІ
+        // Виклик функції по натисканню правої кнопки миші
         private void richTextBox1_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -126,6 +132,7 @@ namespace OOP21
             }
         }
 
+        // Кнопка для копіювання тексту (контекстне меню)
         private void CopyContext_Click(object sender, EventArgs e)
         {
             if (richTextBox1.TextLength > 0)
@@ -134,6 +141,7 @@ namespace OOP21
             }
         }
 
+        // Кнопка для вставки тексту (контекстне меню)
         private void PasteContext_Click(object sender, EventArgs e)
         {
             if (richTextBox1.TextLength > 0)
@@ -142,6 +150,7 @@ namespace OOP21
             }
         }
 
+        // Кнопка для вирізу тексту (контекстне меню)
         private void CutContext_Click(object sender, EventArgs e)
         {
             if (richTextBox1.TextLength > 0)
@@ -150,6 +159,7 @@ namespace OOP21
             }
         }
 
+        // Кнопка для виділення всього тексту (контекстне меню)
         private void SelectAllContext_Click(object sender, EventArgs e)
         {
             if (richTextBox1.TextLength > 0)
@@ -158,6 +168,7 @@ namespace OOP21
             }
         }
 
+        // Кнопка для вставки зображення (контекстне меню)
         private void PasteImageContext_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -173,12 +184,13 @@ namespace OOP21
             }
         }
 
-        // ІВЕНТ ДЛЯ ПІДСВІЧУВАННЯ С-СИНТАКСИСУ
+        // Виклик функції при зміні тексту
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
             HighlightSyntax();
         }
 
+        // Функції, яка підсвічують С подібний синтаксис
         private void HighlightSyntax()
         {
             string keywordsPattern = @"\b(if|else|for|while|do|break|continue|return)\b";
@@ -194,7 +206,6 @@ namespace OOP21
             richTextBox1.SelectionLength = 0;
             richTextBox1.SelectionColor = Color.Black;
         }
-
         private void HighlightMatches(string pattern, Color[] colors)
         {
             MatchCollection matches = Regex.Matches(richTextBox1.Text, pattern);
@@ -206,42 +217,49 @@ namespace OOP21
         }
 
 
-        // КНОПКИ
+        // Кнопка для центрування тексту
         private void CenterButton_Click(object sender, EventArgs e)
         {
             richTextBox1.SelectionAlignment = HorizontalAlignment.Center;
         }
 
+        // Кнопка для вирівнюваняння тексту зліва
         private void LeftButton_Click(object sender, EventArgs e)
         {
             richTextBox1.SelectionAlignment = HorizontalAlignment.Left;
         }
 
+        // Кнопка для вирівнюваняння тексту справа
         private void RightButton_Click(object sender, EventArgs e)
         {
             richTextBox1.SelectionAlignment = HorizontalAlignment.Right;
         }
 
+        // Кнопка зміни тексту шрифта на жирний
         private void BoldButton_Click(object sender, EventArgs e)
         {
             richTextBox1.SelectionFont = new Font(richTextBox1.Font, FontStyle.Bold);
         }
 
+        // Кнопка зміни тексту шрифта на курсив
         private void ItalicButton_Click(object sender, EventArgs e)
         {
             richTextBox1.SelectionFont = new Font(richTextBox1.Font, FontStyle.Italic);
         }
 
+        // Кнопка зміни тексту шрифта на підкреслений
         private void UnderlineButton_Click(object sender, EventArgs e)
         {
             richTextBox1.SelectionFont = new Font(richTextBox1.Font, FontStyle.Underline);
         }
 
+        // Кнопка зміни тексту шрифта на звичайний
         private void RegularButton_Click(object sender, EventArgs e)
         {
             richTextBox1.SelectionFont = new Font(richTextBox1.Font, FontStyle.Regular);
         }
 
+        // Кнопка зміни режиму C#
         private void settings_Click(object sender, EventArgs e)
         {
             if (CSMode)
