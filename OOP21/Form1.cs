@@ -181,32 +181,28 @@ namespace OOP21
 
         private void HighlightSyntax()
         {
-            string keywords = @"\b(if|else|for|while|do|break|continue|return)\b";
-            string types = @"\b(byte|short|int|long|longlong|float|double|decimal|char|string)\b";
-            MatchCollection keywordMatches = Regex.Matches(richTextBox1.Text, keywords);
-            MatchCollection typesMatches = Regex.Matches(richTextBox1.Text, types);
+            string keywordsPattern = @"\b(if|else|for|while|do|break|continue|return)\b";
+            string typePattern = @"\b(void|byte|short|int|long|longlong|float|double|decimal|char|string|using|true|false|static|public|private|class|interface|delegate|struct)\b";
 
-            richTextBox1.SelectionStart = 0;
-            richTextBox1.SelectionLength = richTextBox1.TextLength;
-            richTextBox1.SelectionColor = Color.Black;
-            foreach (Match m in keywordMatches)
-            {
-                richTextBox1.Select(m.Index, m.Length);
+            Color[] keywordColors = { CSMode ? Color.Fuchsia : Color.Black };
+            Color[] typeColors = { CSMode ? Color.Blue : Color.Black };
 
-                Color orderColor = CSMode ? Color.Fuchsia : Color.Black;
-                richTextBox1.SelectionColor = orderColor;
-            }
-            foreach (Match m in typesMatches)
-            {
-                richTextBox1.Select(m.Index, m.Length);
-
-                Color orderColor = CSMode ? Color.DodgerBlue : Color.Black;
-                richTextBox1.SelectionColor = orderColor;
-            }
+            HighlightMatches(keywordsPattern, keywordColors);
+            HighlightMatches(typePattern, typeColors);
 
             richTextBox1.SelectionStart = richTextBox1.Text.Length;
             richTextBox1.SelectionLength = 0;
             richTextBox1.SelectionColor = Color.Black;
+        }
+
+        private void HighlightMatches(string pattern, Color[] colors)
+        {
+            MatchCollection matches = Regex.Matches(richTextBox1.Text, pattern);
+            foreach (Match match in matches)
+            {
+                richTextBox1.Select(match.Index, match.Length);
+                richTextBox1.SelectionColor = colors[0];
+            }
         }
 
 
